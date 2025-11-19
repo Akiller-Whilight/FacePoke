@@ -1,3 +1,7 @@
+import os
+os.environ["QT_LOGGING_RULES"] = "qt.qpa.*=false"  # suppress QT warnings
+os.environ["QT_DEBUG_PLUGINS"] = "0"  # disable Qt plugin debug output
+
 from engine import Engine
 import asyncio
 from loader import initialize_models
@@ -7,7 +11,7 @@ import numpy as np
 from imutils import face_utils
 import gc
 import torch
-PREDICTOR_PATH = "shape_predictor_68_face_landmarks.dat"
+PREDICTOR_PATH = "shape_predictor_68_face_landmarks.dat" # dlib 68点ランドマークモデルのパス
 
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(PREDICTOR_PATH)
@@ -191,6 +195,11 @@ async def main():
     
     cap.release()
     cv2.destroyAllWindows()
+    
+    # Qt スレッド終了の完全性を待つ
+    import time
+    time.sleep(0.2)
+
     return 0
 
 # 実行

@@ -6,78 +6,36 @@
 --extra-index-url https://download.pytorch.org/whl/cu124
 torch
 torchvision
-torchaudio
-torchgeometry
 
-# --------------------------------------------------------------------
-# Common libraries for LivePortrait and all
-# --------------------------------------------------------------------
-
-# LRU cache compatible with asyncio
+# pip requirements for FacePokeLocal (conda-managed packages are excluded)
 async-lru==2.0.4
-
-# note: gradio is only used for the cropping utility
 gradio==5.6.0
-
 pyyaml==6.0.1
-numpy==1.22.0 # Updated to resolve conflicts
-opencv-python==4.8.1.78 # Downgraded to be compatible with numpy
-scipy==1.10.1
 imageio==2.31.1
 imageio-ffmpeg==0.5.1
-lmdb==1.4.1
 tqdm==4.66.4
 rich==13.7.1
-
-# this one is from 5 years ago, we should probably
-# use python-ffmpeg or typed-ffmpeg instead
-# https://pypi.org/search/?q=ffmpeg-python
 ffmpeg-python==0.2.0
-
-# versions of onnx gpu <= 1.17 did not support Cuda 12
 onnxruntime-gpu==1.19.2
-
-# onnx 1.16.2 has some issues it seems:
-# https://github.com/onnx/onnx/issues/6267
-#onnx==1.16.2
-# update: I've rolled it back to 1.16.1
-# see: https://github.com/jbilcke-hf/FacePoke/issues/23#issuecomment-2414714490
 onnx==1.16.1
-
-scikit-image==0.20.0
 albumentations==1.3.1
-matplotlib==3.7.2
 tyro==0.8.5
-chumpy==0.70
-
+imutils==0.5.4
 diffusers==0.30.3
 accelerate==0.34.2
 tensorflow==2.12.0
 tensorboard==2.12.0
 transformers==4.39.2
-
 gdown==5.2.0
 requests==2.32.3
 omegaconf==2.3.0
-
 pydantic==2.9.2
-
-# --------------------------------------------------------------------
-# RESERVED FOR FUTURE USAGE
-#
-# (it adds bloat, so you can remove them if you want)
-# --------------------------------------------------------------------
 aiohttp==3.10.5
 av==12.3.0
 einops==0.7.0
 safetensors==0.4.5
 huggingface-hub==0.25.1
 optimum-quanto==0.2.4
-
-# --------------------------------------------------------------------
-# Used for advanced LivePortrait features
-# --------------------------------------------------------------------
-pillow==10.4.0
-
-# by popular demand, let's add AVIF
 pillow-avif-plugin==1.4.6
+torchgeometry
+# https://github.com/onnx/onnx/issues/6267
